@@ -1,12 +1,18 @@
 /* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Image from "next/image";
+import { sanityClient, urlFor } from "../../sanity";
+import { Post } from "../../typings";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
+interface Props {
+  posts: [Post];
+}
 
-export default function Home() {
+export default function Home({ posts }: Props) {
+  console.log(posts);
+
   return (
     <div className="max-w-7xl mx-auto">
       <Head>
@@ -18,8 +24,10 @@ export default function Home() {
         />
       </Head>
       <Header />
-      <div className="flex justify-center items-center bg-yellow-400
-       border-black border-y-2 py-10 lg:py-0">
+      <div
+        className="flex justify-center items-center bg-yellow-400
+       border-black border-y-2 py-10 lg:py-0"
+      >
         <div className="px-10 space-y-5">
           <h1 className="text-5xl sm:text-6xl  max-w-xl font-serif">
             <span className="font-ubuntu underline decoration-blue-600 decoration-4 ">
@@ -41,6 +49,36 @@ export default function Home() {
           className="w-[300px] h-[250px] hidden sm:inline-flex object-contain lg:h-full"
         />
       </div>
+      {/* Posts  */}
+      <div>
+        {posts.map((post) => (
+          <Link key={post._id} href={`/post/${post.slug.current}`}>
+            <div>
+              <img src={urlFor(post.mainImage).url()!} alt="" />
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+  const query = `*[_type == "post"]{
+    _id,
+      title,
+      author-> {
+        name,
+        image
+      },
+      description,
+      mainImage,
+      slug
+  }`;
+  const posts = await sanityClient.fetch(query);
+  return {
+    props: {
+      posts,
+    },
+  };
+};
