@@ -22,7 +22,12 @@ module.exports = {
         poppins: ["Poppins", "sans-serif"],
         ubuntu: ["Ubuntu", "sans-serif"],
         sigmar: ['Sigmar One', 'cursive'],
-        mono: ['Fira Mono', 'monospace']
+        mono: ['Fira Mono', 'monospace'],
+        eb: ['EB Garamond', 'serif'],
+        hind: ['Hind Siliguri', 'sans-serif'],
+        karla: ['Karla', 'sans-serif'],
+        mukta: ['Mukta', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
       },
       screens: {
         xs: "480px",
