@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
 import Header from "@/components/Header";
@@ -51,29 +50,11 @@ export default function Home({ posts }: Props) {
         />
       </div>
       {/* Posts  */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 lg:p-6">
+      <div>
         {posts.map((post) => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
-            <div className="group border rounded-lg overflow-hidden cursor-pointer">
-              <img
-                src={urlFor(post.mainImage).url()!}
-                alt="main-image"
-                className="h-60 w-full object-cover group-hover:scale-105 transition-transform
-               duration-200 ease-in-out"
-              />
-              <div className="flex justify-between p-5 bg-white">
-                <div>
-                  <p className="text-lg font-bold font-ubuntu">{post.title}</p>
-                  <p className="text-sm max-w-[290px] font-mukta">
-                    {post.description} by {post.author.name}
-                  </p>
-                </div>
-                <img
-                  src={urlFor(post.author.image).url()!}
-                  alt="author-image"
-                  className="h-12 w-12 rounded-full"
-                />
-              </div>
+            <div>
+              <img src={urlFor(post.mainImage).url()!} alt="" />
             </div>
           </Link>
         ))}
