@@ -24,8 +24,11 @@
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+<<<<<<< HEAD
     "react-hook-form": "^7.43.9",
     "react-portable-text": "^0.6.0",
+=======
+>>>>>>> parent of 84546ac (created dynamic pages with slug from sanity)
     "styled-components": "^5.3.10",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
