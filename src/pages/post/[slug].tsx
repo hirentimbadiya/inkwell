@@ -48,19 +48,19 @@ const IndividualPost = ({ post }: Props) => {
         <img
           src={urlFor(post.mainImage).url()}
           alt="main-image"
-          className="md:h-[400px] h-[250px] w-full object-cover rounded-3xl"
+          className="sm:h-[400px] h-[250px] w-full object-cover rounded-3xl"
         />
       </div>
 
       {/* Article for Blog Post */}
       <article className="max-w-3xl mx-auto flex flex-col items-center px-10">
         <h1
-          className="md:text-[44px] sm:text-[36px] text-[26px] mt-10 mb-4 font-mukta font-extrabold justify-center
-        text-[#f237ff]"
+          className="md:text-[2.5rem] sm:text-[36px] text-[26px] mt-10 mb-4 font-plusJakarta font-bold justify-center
+        text-[#f237ff] text-center"
         >
           {post.title}
         </h1>
-        <h2 className="text-xl font-extralight font-hind text-gray-600 mb-2">
+        <h2 className="text-xl font-extralight font-poppins text-gray-600 mb-2">
           {post.description}
         </h2>
         <div className="flex items-center justify-center space-x-2">
@@ -71,8 +71,10 @@ const IndividualPost = ({ post }: Props) => {
           />
           <p className="font-extralight text-sm font-jost">
             Blog Post by{" "}
-            <span className="text-green-500">{post.author.name}</span> -
-            Published at {new Date(post._createdAt).toLocaleString()}
+            <span className="text-green-500 font-semibold font-poppins">
+              {post.author.name}
+            </span>{" "}
+            - Published at {new Date(post._createdAt).toLocaleString()}
           </p>
         </div>
 
@@ -84,14 +86,14 @@ const IndividualPost = ({ post }: Props) => {
             content={post.body}
             serializers={{
               h1: (props: any) => (
-                <h1 className="text-2xl font-bold my-5" {...props} />
+                <h1 className="text-[2rem] font-bold my-5" {...props} />
               ),
               h2: (props: any) => (
-                <h1 className="text-xl font-bold my-5" {...props} />
+                <h2 className="text-[1.75rem] font-bold my-5" {...props} />
               ),
               h3: (props: any) => (
-                <h1
-                  className="text-[24px] font-bold my-5 font-ubuntu text-[#300a56]"
+                <h3
+                  className="text-[1.5rem] font-bold my-5 font-ubuntu text-[#300a56]"
                   {...props}
                 />
               ),
@@ -101,16 +103,26 @@ const IndividualPost = ({ post }: Props) => {
                 </li>
               ),
               h4: (props: any) => (
-                <h1
-                  className="text-[20px] font-bold my-3 font-ubuntu text-[#370f5f]"
+                <h4
+                  className="text-[17px] font-bold my-3 font-ubuntu text-[#370f5f]"
+                  {...props}
+                />
+              ),
+              blockquote: (props: any) => (
+                <blockquote
+                  className="text-[18px] font-plusJakarta bg-slate-300 p-2 rounded-md"
                   {...props}
                 />
               ),
               normal: (props: any) => (
-                <h1 className="text-[19px] font-hind my-5" {...props} />
+                <p className="text-[19px] font-poppins my-5" {...props} />
               ),
               link: ({ href, children }: any) => (
-                <a href={href} className="text-blue-600 hover:underline">
+                <a
+                  href={href}
+                  className="text-blue-600 hover:underline 
+                  font-plusJakarta hover:text-purple-600"
+                >
                   {children}
                 </a>
               ),
