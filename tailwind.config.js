@@ -28,6 +28,7 @@ module.exports = {
         karla: ['Karla', 'sans-serif'],
         mukta: ['Mukta', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
+        plusJakarta:['Plus Jakarta Sans', 'sans-serif']
       },
       screens: {
         xs: "480px",
