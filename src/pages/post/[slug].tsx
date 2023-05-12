@@ -20,13 +20,13 @@ interface Props {
 
 const IndividualPost = ({ post }: Props) => {
   console.log(post);
-  
+
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     await fetch("/api/createComment", {
@@ -236,13 +236,20 @@ const IndividualPost = ({ post }: Props) => {
       )}
 
       {/* Comments */}
-      <div className="flex flex-col p-10 my-10 max-w-2xl shadow shadow-yellow-500 
-      space-y-2 mx-auto bg-slate-200 rounded-lg">
+      <div
+        className="flex flex-col p-10 my-10 max-w-2xl shadow shadow-yellow-500 
+      space-y-2 mx-auto bg-slate-200 rounded-lg"
+      >
         <h3 className="text-4xl font-ubuntu">Comments</h3>
         <hr className="pb-2" />
         {post.comments.map((comment) => (
           <div key={comment._id}>
-            <p className="font-poppins"><span className="text-yellow-500 text-lg font-ubuntu">{comment.name}:{" "}</span>{comment.comment}</p>
+            <p className="font-poppins">
+              <span className="text-yellow-500 text-lg font-ubuntu">
+                {comment.name}:{" "}
+              </span>
+              {comment.comment}
+            </p>
           </div>
         ))}
       </div>
