@@ -20,7 +20,7 @@ interface Props {
 }
 
 const IndividualPost = ({ post }: Props) => {
-  console.log(post);
+  // console.log(post);
 
   const [submitted, setSubmitted] = useState(false);
   const {
