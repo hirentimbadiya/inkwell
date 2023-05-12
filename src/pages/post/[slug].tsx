@@ -19,6 +19,8 @@ interface Props {
 }
 
 const IndividualPost = ({ post }: Props) => {
+  console.log(post);
+  
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -46,7 +48,7 @@ const IndividualPost = ({ post }: Props) => {
       <Header />
       <div className="flex px-10">
         <img
-          src={urlFor(post.mainImage).url()}
+          src={urlFor(post.mainImage).url()!}
           alt="main-image"
           className="sm:h-[400px] h-[250px] w-full object-cover rounded-3xl"
         />
@@ -110,7 +112,8 @@ const IndividualPost = ({ post }: Props) => {
               ),
               blockquote: (props: any) => (
                 <blockquote
-                  className="text-[18px] font-plusJakarta bg-slate-300 p-2 rounded-md"
+                  className="text-[18px] font-plusJakarta bg-slate-300 p-2 rounded-md
+                  shadow shadow-lime-600 space-y-3"
                   {...props}
                 />
               ),
@@ -148,7 +151,8 @@ const IndividualPost = ({ post }: Props) => {
       ) : (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col p-10 my-10 mx-auto max-w-2xl mb-10"
+          className="flex flex-col p-10 my-10 mx-auto max-w-2xl
+           mb-10 bg-slate-100 rounded-lg shadow shadow-green-400 space-x-2"
           autoComplete="off"
         >
           <h3 className="text-md text-green-500 font-ubuntu">
@@ -230,6 +234,18 @@ const IndividualPost = ({ post }: Props) => {
           </button>
         </form>
       )}
+
+      {/* Comments */}
+      <div className="flex flex-col p-10 my-10 max-w-2xl shadow shadow-yellow-500 
+      space-y-2 mx-auto bg-slate-200 rounded-lg">
+        <h3 className="text-4xl font-ubuntu">Comments</h3>
+        <hr className="pb-2" />
+        {post.comments.map((comment) => (
+          <div key={comment._id}>
+            <p className="font-poppins"><span className="text-yellow-500 text-lg font-ubuntu">{comment.name}:{" "}</span>{comment.comment}</p>
+          </div>
+        ))}
+      </div>
     </main>
   );
 };

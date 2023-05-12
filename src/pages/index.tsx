@@ -12,14 +12,14 @@ interface Props {
 }
 
 export default function Home({ posts }: Props) {
-  console.log(posts);
+  // console.log(posts);
 
   return (
     <div className="max-w-7xl mx-auto">
       <Head>
         <title>Inkwell</title>
         <link
-          rel="shortcut icon"
+          rel="shortcut icon"  
           href="/assets/favicon.png"
           type="image/x-icon"
         />
@@ -66,9 +66,7 @@ export default function Home({ posts }: Props) {
                   <p className="text-lg font-bold font-ubuntu">{post.title}</p>
                   <p className="text-sm max-w-[290px] font-poppins ">
                     {post.description} by{" "}
-                    <span className=" text-sky-500">
-                      {post.author.name}
-                    </span>
+                    <span className="text-sky-500">{post.author.name}</span>
                   </p>
                 </div>
                 <img
