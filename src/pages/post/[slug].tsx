@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { Post } from "../../../typings";
 import PortableText from "react-portable-text";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { GetStaticProps } from "next";
 
 interface IFormInput {
   _id: string;
